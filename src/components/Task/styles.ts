@@ -1,4 +1,22 @@
 import styled from 'styled-components'
+import variables from '../../styles/variables'
+import * as enums from '../../utils/enums/Tarefa'
+
+type TagProps = {
+  priority?: enums.Priority
+  status?: enums.Status
+}
+
+function returnBgColor(props: TagProps): string {
+  if ('status' in props) {
+    if (props.status === enums.Status.PENDING) return variables.yellow
+    if (props.status === enums.Status.CLOSED) return variables.green
+  } else if ('priority' in props) {
+    if (props.priority === enums.Priority.URGENT) return variables.red
+    if (props.priority === enums.Priority.IMPORTANT) return variables.yellow_2
+  }
+  return '#ccc'
+}
 
 export const Card = styled.div`
   padding: 16px;
@@ -14,13 +32,13 @@ export const Title = styled.h3`
   font-weight: bold;
 `
 
-export const Tag = styled.span`
+export const Tag = styled.span<TagProps>`
   display: inline-block;
   color: #fff;
   padding: 4px 8px;
   font-size: 10px;
   font-weight: bold;
-  background-color: #e1a32a;
+  background-color: ${(props) => returnBgColor(props)};
   border-radius: 8px;
   margin-right: 16px;
 `
@@ -54,4 +72,11 @@ export const Button = styled.button`
   background-color: #2f3640;
   border-radius: 8px;
   margin-right: 8px;
+`
+
+export const SaveButton = styled(Button)`
+  background-color: ${variables.green};
+`
+export const CancelButton = styled(Button)`
+  background-color: ${variables.red};
 `
