@@ -5,18 +5,17 @@ import * as enums from '../../utils/enums/Tarefa'
 type TagProps = {
   priority?: enums.Priority
   status?: enums.Status
-  param : 'status' | 'priority'
+  param: 'status' | 'priority'
 }
 
 function returnBgColor(props: TagProps): string {
-  if(props.param === 'priority') {
+  if (props.param === 'priority') {
     if (props.priority === enums.Priority.URGENT) return variables.red
     if (props.priority === enums.Priority.IMPORTANT) return variables.yellow_2
-  }else {
+  } else {
     if (props.status === enums.Status.PENDING) return variables.yellow
     if (props.status === enums.Status.CLOSED) return variables.green
   }
-
 
   return '#ccc'
 }
