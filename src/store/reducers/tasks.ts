@@ -10,21 +10,21 @@ const initialState: TasksState = {
   items: [
     {
       id: 1,
-      title: 'Estudar JS',
+      title: 'Estudar JavaScript',
       priority: enums.Priority.IMPORTANT,
-      status: enums.Status.PENDING,
+      status: enums.Status.CLOSED,
       description: ''
     },
     {
       id: 2,
       title: 'Ir para a Academia',
-      priority: enums.Priority.URGENT,
+      priority: enums.Priority.NORMAL,
       status: enums.Status.CLOSED,
       description: 'Treinar membros superiores'
     },
     {
       id: 3,
-      title: 'Estudar React',
+      title: 'Estudar TypeScript',
       priority: enums.Priority.URGENT,
       status: enums.Status.PENDING,
       description: 'Praticar o useEffect'
