@@ -38,9 +38,16 @@ const tasksSlice = createSlice({
   reducers: {
     remove: (state, action: PayloadAction<number>) => {
       state.items = state.items.filter((task) => task.id !== action.payload)
+    },
+    save: (state, action: PayloadAction<Task>) => {
+      const idx = state.items.findIndex((task) => task.id === action.payload.id)
+
+      if (idx >= 0) {
+        state.items[idx] = action.payload
+      }
     }
   }
 })
 
-export const { remove } = tasksSlice.actions
+export const { remove, save } = tasksSlice.actions
 export default tasksSlice.reducer
