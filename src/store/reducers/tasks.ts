@@ -45,9 +45,22 @@ const tasksSlice = createSlice({
       if (idx >= 0) {
         state.items[idx] = action.payload
       }
+    },
+    add: (state, action: PayloadAction<Task>) => {
+      const hasTask = state.items.find(
+        (task) =>
+          task.title.toLocaleLowerCase() ===
+          action.payload.title.toLocaleLowerCase()
+      )
+
+      if (hasTask) {
+        alert('Já existe uma tarefa com esse título!')
+      } else {
+        state.items.push(action.payload)
+      }
     }
   }
 })
 
-export const { remove, save } = tasksSlice.actions
+export const { remove, save, add } = tasksSlice.actions
 export default tasksSlice.reducer
