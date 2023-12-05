@@ -1,5 +1,5 @@
 import Task from '../../components/Task'
-import { Container, Result } from './styles'
+import { MainContainer, Result } from '../../styles'
 
 import { useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
@@ -45,8 +45,8 @@ const TaskList = () => {
   }
 
   return (
-    <Container>
-      <Result>{showResult(tasks.length)}</Result>
+    <MainContainer>
+      <Result as="p">{showResult(tasks.length)}</Result>
 
       <ul>
         {tasks.map((t) => (
@@ -61,7 +61,7 @@ const TaskList = () => {
           </li>
         ))}
       </ul>
-    </Container>
+    </MainContainer>
   )
 }
 

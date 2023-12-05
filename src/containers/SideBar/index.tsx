@@ -5,6 +5,7 @@ import { changeSearch } from '../../store/reducers/filter'
 import { RootReducer } from '../../store'
 import * as enums from '../../utils/enums/Tarefa'
 
+import { Field } from '../../styles'
 const SideBar = () => {
   const dispatch = useDispatch()
   const { search } = useSelector((state: RootReducer) => state.filter)
@@ -12,7 +13,7 @@ const SideBar = () => {
   return (
     <S.Aside>
       <div>
-        <S.Field
+        <Field
           type="text"
           placeholder="Buscar"
           value={search}

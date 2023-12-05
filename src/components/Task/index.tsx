@@ -4,6 +4,7 @@ import * as S from './styles'
 
 import { remove, save } from '../../store/reducers/tasks'
 import TaskClass from '../../models/Task'
+import { SaveButton } from '../../styles'
 
 type Props = TaskClass
 
@@ -45,7 +46,7 @@ const Task = ({
       <S.Actions>
         {editing ? (
           <>
-            <S.SaveButton
+            <SaveButton
               onClick={() => {
                 dispatch(
                   save({
@@ -60,7 +61,7 @@ const Task = ({
               }}
             >
               Salvar
-            </S.SaveButton>
+            </SaveButton>
             <S.CancelButton onClick={() => cancel()}>Cancelar</S.CancelButton>
           </>
         ) : (
