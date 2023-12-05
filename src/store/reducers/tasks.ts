@@ -46,7 +46,7 @@ const tasksSlice = createSlice({
         state.items[idx] = action.payload
       }
     },
-    add: (state, action: PayloadAction<Task>) => {
+    add: (state, action: PayloadAction<Omit<Task, 'id'>>) => {
       const hasTask = state.items.find(
         (task) =>
           task.title.toLocaleLowerCase() ===
@@ -56,7 +56,12 @@ const tasksSlice = createSlice({
       if (hasTask) {
         alert('Já existe uma tarefa com esse título!')
       } else {
-        state.items.push(action.payload)
+        const lastTask = state.items[state.items.length - 1]
+        const newTask = {
+          ...action.payload,
+          id: lastTask ? lastTask.id + 1 : 1
+        }
+        state.items.push(newTask)
       }
     },
     changeStatus: (

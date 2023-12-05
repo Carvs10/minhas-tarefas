@@ -7,7 +7,6 @@ import { Form, Options, Option } from './styles'
 import { useDispatch } from 'react-redux'
 import * as enums from '../../utils/enums/Tarefa'
 import { add } from '../../store/reducers/tasks'
-import Task from '../../models/Task'
 
 const FormContainer = () => {
   const [title, setTitle] = useState('')
@@ -18,14 +17,14 @@ const FormContainer = () => {
   const navigate = useNavigate()
   const addTask = (event: FormEvent) => {
     event.preventDefault()
-    const taskToAdd = new Task(
-      title,
-      priority,
-      enums.Status.PENDING,
-      description,
-      9
+    dispatch(
+      add({
+        title,
+        priority,
+        description,
+        status: enums.Status.PENDING
+      })
     )
-    dispatch(add(taskToAdd))
     navigate('/')
   }
 

@@ -5,5 +5,7 @@ export default {
 
   yellow: '#F0C11A',
 
-  yellow_2: '#E1A32A'
+  yellow_2: '#E1A32A',
+
+  darkBlue: '#2f3640'
 }
