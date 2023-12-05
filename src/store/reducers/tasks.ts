@@ -58,9 +58,21 @@ const tasksSlice = createSlice({
       } else {
         state.items.push(action.payload)
       }
+    },
+    changeStatus: (
+      state,
+      action: PayloadAction<{ id: number; closed: boolean }>
+    ) => {
+      const idx = state.items.findIndex((task) => task.id === action.payload.id)
+
+      if (idx >= 0) {
+        state.items[idx].status = action.payload.closed
+          ? enums.Status.CLOSED
+          : enums.Status.PENDING
+      }
     }
   }
 })
 
-export const { remove, save, add } = tasksSlice.actions
+export const { remove, save, add, changeStatus } = tasksSlice.actions
 export default tasksSlice.reducer
